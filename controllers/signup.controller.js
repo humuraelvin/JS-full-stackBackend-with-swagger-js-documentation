@@ -9,18 +9,20 @@ const Register = async (req, res) => {
         }
         const user = await User.find({ email: req.body.email });
 
-        if (user)
-            return res.status(400).send({ message: "Email trying to be registered not found" });
+        // if (user)
+        //     return res.status(400).send({ message: "Email trying to be registered already exists" });
 
-        const salt = bcrypt.genSalt(process.env.SALT);
+        const salt = await bcrypt.genSalt(10); // Await the result of genSalt
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-        await new User({ ...req.body, password: hashedPassword }).save();
-        res.status(200).send({message:"New User created and saved successfully"})
+        const newUser = await new User({ ...req.body, password: hashedPassword }).save();
+        res.status(200).send({ message: "New User created and saved successfully", newUser })
 
     } catch (error) {
-        res.status(500).send({message:"Internal server error"});
+        console.log(error);
+        res.status(500).send({ message: "Internal server error", error });
     }
 }
 
 module.exports = Register;
+

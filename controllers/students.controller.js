@@ -9,7 +9,7 @@ const createStudent = async (req, res) => {
         })
 
         await newStudent.save();
-        res.status(200).json({ success: true, message: "Student create and saved sucessfully", data: newStudent });
+        res.status(200).json({ success: true, message: "Student created and saved sucessfully", data: newStudent });
 
     } catch (error) {
         res.status(500).json({ success: false, message: "Internal server error" });
