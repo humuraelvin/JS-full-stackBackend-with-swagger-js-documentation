@@ -9,10 +9,9 @@ const Register = async (req, res) => {
         }
         const user = await User.find({ email: req.body.email });
 
-        // if (user)
-        //     return res.status(400).send({ message: "Email trying to be registered already exists" });
+        
 
-        const salt = await bcrypt.genSalt(10); // Await the result of genSalt
+        const salt = await bcrypt.genSalt(10); 
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
         const newUser = await new User({ ...req.body, password: hashedPassword }).save();

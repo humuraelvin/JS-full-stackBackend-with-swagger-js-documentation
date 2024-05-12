@@ -278,12 +278,13 @@ const express = require('express');
 const Login = require('../controllers/login.controller.js') 
 const Register = require('../controllers/signup.controller.js');
 const studentController = require('../controllers/students.controller.js');
+const protectRoute = require('../middleware/protectRoutes.js');
 
 const router = express.Router();
 
 //authentication routes
 
-router.post('/login', Login)
+router.post('/login',protectRoute, Login);
 router.post('/register', Register);
 
 // student - crud - routes
