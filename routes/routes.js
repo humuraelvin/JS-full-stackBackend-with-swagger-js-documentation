@@ -273,9 +273,8 @@
  */
 
 
-
 const express = require('express');
-const Login = require('../controllers/login.controller.js') 
+const Login = require('../controllers/login.controller.js')
 const Register = require('../controllers/signup.controller.js');
 const studentController = require('../controllers/students.controller.js');
 const protectRoute = require('../middleware/protectRoutes.js');
@@ -284,15 +283,15 @@ const router = express.Router();
 
 //authentication routes
 
-router.post('/login',protectRoute, Login);
+router.post('/login', Login);
 router.post('/register', Register);
 
 // student - crud - routes
 
-router.post('/createStudent', studentController.createStudent);
-router.get('/getStudent/:id', studentController.getStudent);
-router.get('/getStudents', studentController.getStudents);
-router.put('/editStudent/:id', studentController.updateStudent);
-router.delete('/deleteStudent/:id', studentController.deleteStudent);
+router.post('/createStudent', protectRoute, studentController.createStudent);
+router.get('/getStudent/:id', protectRoute, studentController.getStudent);
+router.get('/getStudents', protectRoute, studentController.getStudents);
+router.put('/editStudent/:id', protectRoute, studentController.updateStudent);
+router.delete('/deleteStudent/:id', protectRoute, studentController.deleteStudent);
 
 module.exports = router;
