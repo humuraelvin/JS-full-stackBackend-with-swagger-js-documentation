@@ -1,43 +1,5 @@
 /**
  * @swagger
- * /login:
- *   post:
- *     summary: Log in user
- *     description: Logs in a user with provided email and password.
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *     responses:
- *       200:
- *         description: Successful login
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *       400:
- *         description: Invalid username or password
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- */
-
-/**
- * @swagger
  * /register:
  *   post:
  *     summary: Register new user
@@ -67,6 +29,44 @@
  *                   type: string
  *       400:
  *         description: Email already in use
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */
+
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Log in user
+ *     description: Logs in a user with provided email and password.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Successful login
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Invalid username or password
  *         content:
  *           application/json:
  *             schema:
@@ -271,6 +271,7 @@
  *                 message:
  *                   type: string
  */
+
 
 
 const express = require('express');
