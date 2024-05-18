@@ -1,4 +1,3 @@
-//SWAGGER CODE 
 /**
  * @swagger
  * /register:
